@@ -55,21 +55,21 @@ app.get('/auth/google',
 );
 
 app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/index.html' }),
+  passport.authenticate('google', { failureRedirect: '/Intro.html' }),
   (req, res) => {
-    res.redirect('/explore.html');
+    res.redirect('/Explore.html');
   }
 );
 
-app.get('/explore.html', ensureAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'explore.html'));
+app.get('/Explore.html', ensureAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'Explore.html'));
 });
 
 app.get('/', (req, res) => {
   if (req.isAuthenticated()) {
-    res.redirect('/explore.html');
+    res.redirect('/Explore.html');
   } else {
-    res.redirect('/index.html');
+    res.redirect('/Intro.html');
   }
 });
 
